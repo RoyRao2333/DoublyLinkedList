@@ -197,9 +197,6 @@ int DoublyLinkedList::getLength() {
 void DoublyLinkedList::print() {
     LNode *ptrNode = this->head->next;
     while (ptrNode != this->tail) {
-        if (ptrNode->data == 0) {
-            continue;
-        }
         cout << ptrNode->data << "\t";
         ptrNode = ptrNode->next;
     }
