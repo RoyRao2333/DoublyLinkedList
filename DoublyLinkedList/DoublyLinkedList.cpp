@@ -62,6 +62,7 @@ void DoublyLinkedList::append2End(int data) {
     newNode->next =this->tail;
     ptrCur->next = newNode;
     this->tail->prev = newNode;
+    this->length++;
     cout << "Node appended to the end." << endl;
 }
 
@@ -73,6 +74,7 @@ void DoublyLinkedList::append2Front(int data) {
     newNode->next = ptrHead->next;
     ptrHead->next->prev = newNode;
     ptrHead->next = newNode;
+    this->length++;
     cout << "Node appended to the front" << endl;
 }
 
@@ -194,7 +196,10 @@ int DoublyLinkedList::getLength() {
 
 void DoublyLinkedList::print() {
     LNode *ptrNode = this->head->next;
-    while (ptrNode != nullptr) {
+    while (ptrNode != this->tail) {
+        if (ptrNode->data == 0) {
+            continue;
+        }
         cout << ptrNode->data << "\t";
         ptrNode = ptrNode->next;
     }
