@@ -1,4 +1,4 @@
-# Doubly-linked-List
+# DoublyLinkedList
 
 ## Lisense
 Created by RoyRao.
