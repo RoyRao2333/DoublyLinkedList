@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B03DD37C269ED52A00F9CD1E /* DoublyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03DD37B269ED52A00F9CD1E /* DoublyLinkedList.swift */; };
+		B03DD37C269ED52A00F9CD1E /* DLList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03DD37B269ED52A00F9CD1E /* DLList.swift */; };
 		B03DD37E269ED84300F9CD1E /* DLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03DD37D269ED84300F9CD1E /* DLNode.swift */; };
 		B0FA5A62269ED09600262F35 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FA5A61269ED09600262F35 /* main.swift */; };
 /* End PBXBuildFile section */
@@ -25,7 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B03DD37B269ED52A00F9CD1E /* DoublyLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublyLinkedList.swift; sourceTree = "<group>"; };
+		B03DD37B269ED52A00F9CD1E /* DLList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLList.swift; sourceTree = "<group>"; };
 		B03DD37D269ED84300F9CD1E /* DLNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLNode.swift; sourceTree = "<group>"; };
 		B0FA5A5E269ED09600262F35 /* DoublyLinkedList-Swift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "DoublyLinkedList-Swift"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FA5A61269ED09600262F35 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			children = (
 				B0FA5A61269ED09600262F35 /* main.swift */,
 				B03DD37D269ED84300F9CD1E /* DLNode.swift */,
-				B03DD37B269ED52A00F9CD1E /* DoublyLinkedList.swift */,
+				B03DD37B269ED52A00F9CD1E /* DLList.swift */,
 			);
 			path = "DoublyLinkedList-Swift";
 			sourceTree = "<group>";
@@ -148,7 +148,7 @@
 			files = (
 				B03DD37E269ED84300F9CD1E /* DLNode.swift in Sources */,
 				B0FA5A62269ED09600262F35 /* main.swift in Sources */,
-				B03DD37C269ED52A00F9CD1E /* DoublyLinkedList.swift in Sources */,
+				B03DD37C269ED52A00F9CD1E /* DLList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,6 @@
 //
-//  DoublyLinkedList.swift
-//  DoublyLinkedList-Swift
+//  DLList.swift
+//  DLList-Swift
 //
 //  Created by Roy on 2021/7/14.
 //
@@ -19,6 +19,15 @@ public class DLList<Value> {
     }
     
     
+    /**
+     *  Returns a `DLList` instance.
+     *
+     *  This operation will initialize the head of a `DLList` if the parameter `value` isn't `nil`.
+     *  Otherwise, an empty `DLList` instance will be created.
+     *
+     *  - Parameters:
+     *      - value: The value for the head.
+     */
     public init(_ value: Value? = nil) {
         if let value = value {
             head = DLNode(value)
@@ -33,7 +42,9 @@ public class DLList<Value> {
 extension DLList {
     
     /**
-     *  Returns a `DLNode` instance with a given index.
+     *  Returns a `DLNode` of the `DLList` if available.
+     *
+     *  Find and return the `DLNode` at the given index.
      *
      *  - Parameters:
      *      - index: A node's position in list.
@@ -53,13 +64,14 @@ extension DLList {
     }
     
     /**
-     *  Add element to the front of `DLList`.
+     *  Add element to the front of a `DLList`.
      *
      *  - Parameters:
      *      - value: The value you want to add.
      */
     public func push_front(_ value: Value) {
         let newNode = DLNode(value, next: head, prev: nil)
+        head?.prev = newNode
         head = newNode
         
         // Only One Node Left in List
@@ -71,7 +83,7 @@ extension DLList {
     }
     
     /**
-     *  Add element to the tail of `DLList`.
+     *  Add element to the tail of a `DLList`.
      *
      *  - Parameters:
      *      - value: The value you want to add.
@@ -83,13 +95,21 @@ extension DLList {
             return
         }
         
-        let newNode = DLNode(value)
+        let newNode = DLNode(value, next: nil, prev: tail)
         tail?.next = newNode
         tail = newNode
         count += 1
     }
     
-    // TODO: Missing Documentation
+    /**
+     *  Returns the new `DLNode` just added.
+     *
+     *  Add element to a `DLList` after a existing node.
+     *
+     *  - Parameters:
+     *      - value: The value you want to add.
+     *      - node: The existing node before the node you want to add.
+     */
     @discardableResult
     public func insert(_ value: Value, after node: DLNode<Value>) -> DLNode<Value> {
         if node === tail {
@@ -103,7 +123,15 @@ extension DLList {
         return node.next!
     }
     
-    // TODO: Missing Documentation
+    /**
+     *  Returns the new `DLNode` just added.
+     *
+     *  Add element to a `DLList` before a existing node.
+     *
+     *  - Parameters:
+     *      - value: The value you want to add.
+     *      - node: The existing node after the node you want to add.
+     */
     @discardableResult
     public func insert(_ value: Value, before node: DLNode<Value>) -> DLNode<Value> {
         if node === head {
@@ -117,7 +145,15 @@ extension DLList {
         return node.prev!
     }
     
-    // TODO: Missing Documentation
+    /**
+     *  Returns the new `DLNode` if added successfully.
+     *
+     *  Add element to a position in a `DLList` by  a given index.
+     *
+     *  - Parameters:
+     *      - value: The value you want to add.
+     *      - index: The position you want the value to be added.
+     */
     @discardableResult
     public func insert(_ value: Value, at index: UInt) -> DLNode<Value>? {
         guard !isEmpty else {
@@ -126,7 +162,7 @@ extension DLList {
             return head!
         }
         
-        guard index > 0 else {
+        guard index != 0 else {
             insert(value, after: head!)
             
             return head!.next!
@@ -139,7 +175,11 @@ extension DLList {
         return nil
     }
     
-    // TODO: Missing Documentation
+    /**
+     *  Returns the value stored by the removed node if available.
+     *
+     *  Remove the first element from a `DLList`.
+     */
     @discardableResult
     public func pop_front() -> Value? {
         guard !isEmpty else { return nil }
@@ -156,7 +196,11 @@ extension DLList {
         return oldHead?.value
     }
     
-    // TODO: Missing Documentation
+    /**
+     *  Returns the value stored by the removed node if available.
+     *
+     *  Remove the last element from a `DLList`.
+     */
     @discardableResult
     public func pop_back() -> Value? {
         guard count > 1 else { return pop_front() }
@@ -170,7 +214,14 @@ extension DLList {
         return removedNode?.value
     }
     
-    // TODO: Missing Documentation
+    /**
+     *  Returns the value of the new node after the parameter `node` if available.
+     *
+     *  Remove the element after a given existing node from a `DLList`.
+     *
+     *  - Parameters:
+     *      - node: The existing node before the node you want to remove.
+     */
     @discardableResult
     public func pop(after node: DLNode<Value>) -> Value? {
         guard node.next != nil else { return nil }
@@ -184,7 +235,14 @@ extension DLList {
         return node.next?.value
     }
     
-    // TODO: Missing Documentation
+    /**
+     *  Returns the value of the new node before the parameter `node` if available.
+     *
+     *  Remove the element before a given existing node from a `DLList`.
+     *
+     *  - Parameters:
+     *      - node: The existing node after the node you want to remove.
+     */
     @discardableResult
     public func pop(before node: DLNode<Value>) -> Value? {
         guard node.prev != nil else { return nil }
@@ -198,7 +256,14 @@ extension DLList {
         return node.prev?.value
     }
     
-    // TODO: Missing Documentation
+    /**
+     *  Returns the value stored by the removed node if available.
+     *
+     *  Remove the element by a given index from a `DLList`.
+     *
+     *  - Parameters:
+     *      - index: The position of the node you want to remove.
+     */
     @discardableResult
     public func pop(at index: UInt) -> Value? {
         guard index < count else { return nil }
@@ -214,5 +279,23 @@ extension DLList {
         }
         
         return nil
+    }
+    
+    /**
+     *  Returns all values stored by nodes in a `DLList`.
+     */
+    public func readAll() -> [Value] {
+        guard !isEmpty else { return [] }
+        
+        var current = head
+        var result: [Value] = []
+        
+        while let value = current?.value {
+            result.append(value)
+            
+            current = current?.next
+        }
+        
+        return result
     }
 }
